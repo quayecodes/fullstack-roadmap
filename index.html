@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevPath.io | Interactive Fullstack Developer Roadmap</title>
+  <meta name="description" content="An interactive, highly visual roadmap for fullstack web developers. Track progress, learn modern skills (Next.js, FastAPI, Docker, Kubernetes), and test your knowledge.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="logo-area">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z"/>
+            <path d="M9 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z"/>
+            <path d="M12 12h.01"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="brand-name">DevPath<span class="accent">.io</span></span>
+          <span class="sub-brand">Fullstack Roadmap</span>
+        </div>
+      </div>
+
+      <!-- Quick Search & Actions -->
+      <div class="header-actions">
+        <div class="search-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="search-input" placeholder="Search technologies or concepts...">
+        </div>
+
+        <button id="theme-toggle" class="icon-button" aria-label="Toggle visual theme">
+          <!-- Moon Icon (Dark Mode active by default) -->
+          <svg class="theme-icon moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <!-- Sun Icon (Light Mode) -->
+          <svg class="theme-icon sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-layout">
+    
+    <!-- Sidebar / Control Panel -->
+    <aside class="sidebar">
+      
+      <!-- Profile & Progress Section -->
+      <section class="panel stats-panel">
+        <h3 class="panel-title">Your Progress</h3>
+        
+        <div class="overall-progress">
+          <div class="progress-ring-container">
+            <svg class="progress-ring" width="100" height="100">
+              <circle class="progress-ring-circle-bg" stroke="currentColor" stroke-width="8" fill="transparent" r="40" cx="50" cy="50"/>
+              <circle class="progress-ring-circle" id="global-progress-circle" stroke="currentColor" stroke-width="8" fill="transparent" r="40" cx="50" cy="50"/>
+            </svg>
+            <div class="progress-text">
+              <span class="percentage" id="global-progress-percentage">0%</span>
+              <span class="label">Complete</span>
+            </div>
+          </div>
+          
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value" id="stats-completed">0/15</span>
+              <span class="stat-label">Nodes Completed</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value" id="stats-quizzes">0</span>
+              <span class="stat-label">Quizzes Passed</span>
+            </div>
+          </div>
+        </div>
+
+        <button id="reset-progress" class="text-button danger-button">Reset All Progress</button>
+      </section>
+
+      <!-- Path Filtering Section -->
+      <section class="panel filters-panel">
+        <h3 class="panel-title">Choose Career Path</h3>
+        <p class="panel-desc">Select a specialized focus to highlight nodes on the roadmap matching your career goals.</p>
+        
+        <div class="career-paths">
+          <button class="path-btn active" data-path="all">
+            <span class="path-icon">🌐</span>
+            <div class="path-info">
+              <span class="path-title">Fullstack Generalist</span>
+              <span class="path-desc">The complete standard path</span>
+            </div>
+          </button>
+          
+          <button class="path-btn" data-path="frontend">
+            <span class="path-icon">🎨</span>
+            <div class="path-info">
+              <span class="path-title">Frontend Specialist</span>
+              <span class="path-desc">Heavy UI/UX, React & Next.js</span>
+            </div>
+          </button>
+          
+          <button class="path-btn" data-path="backend">
+            <span class="path-icon">⚙️</span>
+            <div class="path-info">
+              <span class="path-title">Backend Specialist</span>
+              <span class="path-desc">FastAPI, APIs, DBs & Security</span>
+            </div>
+          </button>
+          
+          <button class="path-btn" data-path="devops">
+            <span class="path-icon">☁️</span>
+            <div class="path-info">
+              <span class="path-title">DevOps & Cloud</span>
+              <span class="path-desc">Docker, K8s, CI/CD & Scale</span>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Badge Showcase Section -->
+      <section class="panel badges-panel">
+        <h3 class="panel-title">Milestone Badges</h3>
+        <div class="badge-grid" id="badge-container">
+          <!-- Badges dynamically rendered here -->
+        </div>
+      </section>
+    </aside>
+
+    <!-- Roadmap Viewport -->
+    <section class="roadmap-viewport">
+      <div class="roadmap-header">
+        <div class="roadmap-meta">
+          <h1 class="roadmap-title">Interactive Learning Roadmap</h1>
+          <p class="roadmap-subtitle">Click on any node to view concepts, reference guides, practice project requirements, and take a verification quiz.</p>
+        </div>
+        
+        <div class="legend">
+          <div class="legend-item"><span class="legend-dot locked"></span> Locked</div>
+          <div class="legend-item"><span class="legend-dot in-progress"></span> Learning</div>
+          <div class="legend-item"><span class="legend-dot completed"></span> Completed</div>
+        </div>
+      </div>
+
+      <!-- Roadmap Graph Nodes Wrapper -->
+      <div class="roadmap-container" id="roadmap-container">
+        <!-- Connecting SVG lines generated dynamically or styled -->
+        <svg class="roadmap-connectors" id="connectors-svg"></svg>
+        
+        <div class="roadmap-stages" id="roadmap-stages-wrapper">
+          <!-- Dynamic roadmap stages and nodes are rendered here by app.js -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Sliding Details Drawer -->
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <aside class="details-drawer" id="details-drawer">
+    
+    <!-- Drawer Header -->
+    <div class="drawer-header">
+      <div class="drawer-header-left">
+        <span class="drawer-category" id="drawer-category">Frontend Foundations</span>
+        <h2 class="drawer-title" id="drawer-node-title">HTML & CSS</h2>
+      </div>
+      <div class="drawer-header-right">
+        <button id="drawer-close" class="icon-button" aria-label="Close panel">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Status Toggles -->
+    <div class="drawer-status-bar">
+      <span class="status-label">Learning Status:</span>
+      <div class="status-options">
+        <button class="status-opt-btn" data-status="locked" id="status-btn-locked">Locked</button>
+        <button class="status-opt-btn" data-status="in-progress" id="status-btn-progress">Learning</button>
+        <button class="status-opt-btn" data-status="completed" id="status-btn-completed">Completed</button>
+      </div>
+    </div>
+
+    <!-- Drawer Navigation Tabs -->
+    <div class="drawer-tabs">
+      <button class="drawer-tab active" data-tab="learn">Learn & Resources</button>
+      <button class="drawer-tab" data-tab="project">Practice Project</button>
+      <button class="drawer-tab" data-tab="assess">Assess Yourself</button>
+    </div>
+
+    <!-- Drawer Content Scrollable Area -->
+    <div class="drawer-content">
+      
+      <!-- Tab 1: Learn & Resources -->
+      <div class="tab-panel active" id="panel-learn">
+        <div class="concepts-box">
+          <h4 class="section-title">Core Concepts to Master</h4>
+          <ul class="concept-checklist" id="concepts-checklist">
+            <!-- Populated dynamically -->
+          </ul>
+        </div>
+
+        <div class="resources-box">
+          <h4 class="section-title">Curated Learning Path</h4>
+          <div class="resource-list" id="resources-list">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Practice Project -->
+      <div class="tab-panel" id="panel-project">
+        <div class="project-brief">
+          <h4 class="section-title" id="project-title">Project Title</h4>
+          <p class="project-desc" id="project-desc">Project description...</p>
+          
+          <div class="project-reqs">
+            <h5 class="sub-section-title">Milestone Requirements</h5>
+            <ul class="reqs-list" id="project-reqs-list">
+              <!-- Populated dynamically -->
+            </ul>
+          </div>
+
+          <div class="project-tip">
+            <span class="tip-icon">💡</span>
+            <div class="tip-content">
+              <strong>Pro Tip:</strong> <span id="project-pro-tip">Pro-tip for implementing this project.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Assess Yourself (Mini-Quiz) -->
+      <div class="tab-panel" id="panel-assess">
+        <div class="quiz-container" id="quiz-container">
+          <div class="quiz-intro" id="quiz-intro">
+            <span class="quiz-badge-icon">✏️</span>
+            <h4>Verify Your Understanding</h4>
+            <p>Pass this 3-question assessment with 100% accuracy to earn your status badge and complete this roadmap node!</p>
+            <button class="primary-button" id="start-quiz-btn">Start Mini-Quiz</button>
+          </div>
+
+          <div class="quiz-qa-box" id="quiz-qa-box" style="display: none;">
+            <div class="quiz-header">
+              <span class="quiz-q-index" id="quiz-q-index">Question 1 of 3</span>
+              <div class="quiz-progress-bar"><div class="bar-fill" id="quiz-progress-fill"></div></div>
+            </div>
+            <h4 class="quiz-question" id="quiz-question-text">Question text goes here?</h4>
+            <div class="quiz-options" id="quiz-options-list">
+              <!-- Dynamically populated button options -->
+            </div>
+            <button class="primary-button" id="next-q-btn" style="display: none;" disabled>Continue</button>
+          </div>
+
+          <div class="quiz-results" id="quiz-results" style="display: none;">
+            <!-- Quiz results rendered here -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </aside>
+
+  <!-- JS Script -->
+  <script src="app.js"></script>
+</body>
+</html>
