@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Base custom interactive transitions */
+html {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* High-Contrast Dark Mode Global Cascading Styles */
+.dark {
+  color-scheme: dark;
+
+  /* Global background overrides */
+  &, & body, & #main-root, & section, & main, & .bg-slate-50 {
+    background-color: #0b0f19 !important;
+    color: #ebdff0 !important;
+  }
+
+  /* Cards, containers, headers & footers overrides */
+  & .bg-white, 
+  & header.bg-white, 
+  & footer.bg-white,
+  & aside .bg-white,
+  & #ai-chat-box {
+    background-color: #111827 !important;
+    border-color: #1f2937 !important;
+    color: #f3f4f6 !important;
+  }
+
+  /* Secondary standard light grey blocks */
+  & .bg-slate-50\/40, 
+  & .bg-slate-100 {
+    background-color: #1f2937 !important;
+    color: #e5e7eb !important;
+  }
+
+  & .bg-slate-50, 
+  & .dark\:bg-slate-900 {
+    background-color: #111827 !important;
+  }
+
+  /* Hover utilities */
+  & .hover\:bg-slate-50:hover, 
+  & .hover\:bg-slate-100:hover,
+  & .hover\:bg-slate-100\/60:hover {
+    background-color: #1f2937 !important;
+    color: #ffffff !important;
+  }
+
+  /* Typography color scaling */
+  & .text-[#0f172a],
+  & .text-slate-900,
+  & .text-slate-950,
+  & h1, & h2, & h3, & h4, & h5, & h6 {
+    color: #ffffff !important;
+  }
+
+  & .text-slate-800,
+  & .text-slate-700,
+  & .text-slate-600 {
+    color: #d1d5db !important;
+  }
+
+  & .text-slate-500,
+  & .text-slate-400 {
+    color: #9ca3af !important;
+  }
+
+  /* Borders high-contrast rules */
+  & .border-slate-100,
+  & .border-slate-200,
+  & .border-slate-150,
+  & .border-slate-200\/50,
+  & .border-slate-200\/60,
+  & .border-slate-850,
+  & .border-slate-800,
+  & .border-t {
+    border-color: #1f2937 !important;
+  }
+
+  /* Indigo Accent text contrast improvements */
+  & .text-indigo-600 {
+    color: #818cf8 !important;
+  }
+
+  & .text-indigo-700 {
+    color: #a5b4fc !important;
+  }
+
+  & .bg-indigo-50 {
+    background-color: #1e1b4b !important;
+    color: #ebdff0 !important;
+    border-color: #312e81 !important;
+  }
+
+  & .bg-indigo-100 {
+    background-color: #312e81 !important;
+    color: #e0e7ff !important;
+  }
+
+  /* Emerald Alert/Success container accessibility */
+  & .bg-emerald-50, 
+  & .bg-emerald-50\/40 {
+    background-color: #064e3b !important;
+    color: #a7f3d0 !important;
+    border-color: #065f46 !important;
+  }
+
+  & .text-emerald-700 {
+    color: #34d399 !important;
+  }
+
+  /* Warning Yellow/Amber container accessibility */
+  & .bg-amber-50 {
+    background-color: #451a03 !important;
+    color: #fde68a !important;
+    border-color: #78350f !important;
+  }
+
+  & .text-amber-700 {
+    color: #fbbf24 !important;
+  }
+
+  /* Danger Red/Rose container accessibility */
+  & .bg-rose-50 {
+    background-color: #4c0519 !important;
+    color: #fecdd3 !important;
+    border-color: #881337 !important;
+  }
+
+  & .text-rose-800 {
+    color: #f87171 !important;
+  }
+
+  /* Special Pre and Code element handling */
+  & pre, & code {
+    background-color: #090f1d !important;
+    border-color: #1f2937 !important;
+    color: #34d399 !important;
+  }
+
+  /* Forms, Input and Selection Controls */
+  & input, & textarea, & select {
+    background-color: #111827 !important;
+    border-color: #1f2937 !important;
+    color: #ffffff !important;
+  }
+
+  & input:focus, & textarea:focus, & select:focus {
+    border-color: #6366f1 !important;
+    outline: none;
+  }
+
+  & input::placeholder {
+    color: #4b5563 !important;
+  }
+
+  /* Custom scrollbar overrides */
+  & ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  & ::-webkit-scrollbar-track {
+    background: #0b0f19;
+  }
+  & ::-webkit-scrollbar-thumb {
+    background: #374151;
+    border-radius: 9999px;
+  }
+  & ::-webkit-scrollbar-thumb:hover {
+    background: #4b5563;
+  }
+}

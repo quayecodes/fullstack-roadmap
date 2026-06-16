@@ -1,0 +1,6 @@
+{
+  "name": "Next.js Interactive Learning Hub",
+  "description": "An ultimate interactive learning platform and companion to master Next.js 15, React Server Components, App Router directory structures, Server Actions, and rendering paradigms with an integrated AI Next.js Tutor.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
